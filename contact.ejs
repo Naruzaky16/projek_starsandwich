@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONTACT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Potta+One&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/26a680fbef.js" crossorigin="anonymous"></script>
+
+    <!-- Leaflet CSS & JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            font-family: "Potta One", sans-serif;
+        }
+
+        .kontak {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, 180px);
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            padding: 15px;
+            height: 120px;
+            color: white;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card b {
+            font-size: 16px;
+            color: white;
+        }
+
+        .wa { background: #B1D0A9; }
+        .ig { background: #F6A5C0; }
+        .twitter { background: #9DC8F0; }
+        .shopee { background: #F4C07A; }
+        .tt { background: #abb8c3; }
+        .email { background: #cf2e2e }
+
+        .card a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        #map {
+            height: 300px;
+            width: 1000px;
+            margin: 25px auto;
+            border-radius: 25px;
+            border: 10px solid maroon;
+            background-color: rgb(0, 0, 0);
+            display: block;
+        }
+
+        .back-circle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: maroon;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            z-index: 9999;
+            transition: 0.2s;
+        }
+
+        .back-circle:hover {
+            background-color: #a00000;
+            transform: scale(1.1);
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <a href="/" class="back-circle">
+        <i class="fa-solid fa-arrow-left"></i>
+    </a>
+
+    <header>
+        <h1>CONTACT</h1>
+    </header>
+
+    <div class="kontak">
+        <div class="card wa">
+            <a href="https://wa.me/62895709043700" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+            <b>WhatsApp</b>
+        </div>
+
+        <div class="card ig">
+            <a href="https://www.instagram.com/starsandw1ch?igsh=ZGM2amUyeGd5a3Zn" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <b>Instagram</b>
+        </div>
+
+        <div class="card email">
+            <a href="mailto:starsandwich01@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+            <b>Email</b>
+        </div>
+
+        <div class="card twitter">
+            <a href="https://x.com/starsandwich1" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+            <b>X</b>
+        </div>
+
+        <div class="card tt">
+            <a href="https://www.tiktok.com/@sstarsandwich" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+            <b>TikTok</b>
+        </div>
+
+        <div class="card shopee">
+            <a href="https://id.shp.ee/lnh1aos?smtt=0.0.9" target="_blank"><i class="fa-solid fa-bag-shopping"></i></a>
+            <b>Shopee</b>
+        </div>
+    </div>
+
+    <div class="container-map">
+        <div id="map"></div>
+    </div>
+
+    <script>
+        var map = L.map('map').setView([-6.407074690831747, 107.46139254067545], 17);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 25
+        }).addTo(map);
+
+        L.marker([-6.407074690831747, 107.46139254067545]).addTo(map)
+            .bindPopup('STAR SANDWICH')
+            .openPopup();
+    </script>
+
+</body>
+
+</html>
