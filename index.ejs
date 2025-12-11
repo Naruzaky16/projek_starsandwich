@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>STAR SANDWICH</title>
+    <script src="https://kit.fontawesome.com/26a680fbef.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Potta+One&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(235, 234, 233);
+            font-family: "Poppins", sans-serif;
+            overflow-x: hidden;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+            height: 70px;
+            background-color: maroon;
+            color: aliceblue;
+            padding: 0 20px;
+        }
+
+        header h1 {
+            font-family: cursive;
+            font-size: 22px;
+        }
+        
+        .header-logo {
+            width: 40px; 
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 10px;
+            vertical-align: middle; 
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-family: "Potta One", sans-serif;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: gold;
+        }
+
+        @media (max-width: 768px) {
+            .hide {
+                display: none;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .hide {
+                display: inline;
+            }
+        }
+
+        .m-varian {
+            width: 100%; 
+            max-width: 400px;
+            border: 5px solid rgb(255, 255, 255);
+            color: white;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 10px;
+            margin-top: 30px;
+            background-color: maroon;
+            transition: 0.3s;
+            margin-bottom: 20px; 
+        }
+
+        .v-img {
+            width: 70%;
+            border: 3px solid maroon;
+            background-color: rgb(255, 255, 255);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .img1 {
+            max-width: 100%;
+            height: auto;
+            transition: 0.5s;
+            filter: drop-shadow(5px 10px 15px rgba(8, 9, 13, 0.8));
+            display: block;
+        }
+
+        .m-varian:hover .img1 {
+            transform: translate(-1rem, -2rem) rotate(-15deg);
+        }
+
+        .nama-v {
+            margin: 10px;
+            text-align: center;
+            color: white;
+        }
+
+        .btn {
+            margin: 10px 0;
+            padding: 5px;
+            background-color: rgb(250, 250, 250);
+            color: maroon;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            width: 100px;
+            border: 2px solid rgb(255, 255, 255);
+            border-radius: 10px;
+            transition: 0.2s;
+            opacity: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .m-varian:hover .btn {
+            opacity: 1;
+        }
+
+        .btn:hover {
+            color: rgb(173, 230, 187);
+        }
+
+        .m-varian:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        menu {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            justify-items: center;
+            padding: 20px;
+            margin-top: 90px;
+        }
+
+        @media (min-width: 768px) {
+            menu {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        footer {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 50px;
+            padding: 20px;
+            width: 100%;
+            background-color: maroon;
+            color: aliceblue;
+            margin-top: 30px;
+        }
+
+        .img-logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .social a {
+            color: aliceblue;
+            font-size: 28px;
+            margin-right: 15px;
+            transition: 0.3s;
+        }
+
+        .social a:hover {
+            color: gold;
+        }
+
+        .info,
+        .customer,
+        .social {
+            max-width: 200px;
+        }
+
+        @media (max-width: 768px) {
+            footer {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            footer>div,
+            footer>img {
+                margin-bottom: 20px;
+            }
+
+            .social a {
+                margin-right: 10px;
+            }
+        }
+
+        .copyright {
+            text-align: center;
+            padding: 10px;
+            background-color: #111;
+            color: #ddd;
+            font-size: 14px;
+        }
+
+        .customer a {
+            display: block;
+            color: aliceblue;
+            margin: 5px 0;
+            text-decoration: none;
+        }
+
+        .cart-hp {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .cart-hp {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: fixed;
+                top: 80px;
+                right: 10px;
+                width: 50px;
+                height: 50px;
+                background-color: maroon;
+                color: white;
+                border-radius: 50%;
+                z-index: 2000;
+                font-size: 24px;
+                box-shadow: 0 10px 8px rgba(0, 0, 0, 0.3);
+                transition: 0.3s;
+            }
+
+            .cart-hp:hover {
+                background-color: darkred;
+                color: gold;
+            }
+        }
+
+        .dropdown {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .dropbtn {
+            text-decoration: none;
+            color: aliceblue;
+            font-size: 16px;
+            padding: 10px 5px;
+            display: block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            left: unset;
+            background-color: maroon;
+            min-width: 180px;
+            border-radius: 0 0 10px 10px;
+            padding: 10px 0;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 999;
+        }
+
+        .nav-menu .dropdown:first-child .dropdown-content {
+            left: 0;
+            right: unset;
+        }
+
+
+        .dropdown-content a {
+            display: block;
+            padding: 8px 15px;
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .dropdown-content a:hover {
+            background: #8b0000;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            color: gold;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>
+            <img src="https://raw.githubusercontent.com/tristan27278/StarSandwich/refs/heads/main/img/logo%20starsandwich.jpg" 
+                 alt="logo brand" 
+                 class="header-logo">
+            STAR SANDWICH
+            <% if (user) { %>
+                - Halo, <%= user.nama %>👋 
+            <% } %>
+        </h1>
+
+        <nav class="nav-menu">
+            <div class="dropdown">
+                <a href="#" class="dropbtn">BERANDA</a>
+                <div class="dropdown-content">
+                    <% if (categories && categories.length> 0) { %>
+                        <% categories.forEach(category=> { %>
+                            <a href="#<%= category.replace(/\s/g, '-') %>">
+                                <%= category %>
+                            </a>
+                        <% }); %>
+                    <% } else { %>
+                        <a href="#">Menu tidak tersedia</a>
+                    <% } %>
+                </div>
+            </div>
+
+            <a href="/order">ORDER</a>
+            <a href="/about" class="hide">ABOUT US</a>
+
+            <% if (user) { %>
+                <div class="dropdown">
+                    <a href="#" class="dropbtn">
+                        <i class="fa-solid fa-user-circle"></i>
+                        <%= user.nama %>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="/history">Riwayat Pesanan</a>
+                        <a href="/logout" style="color: gold; font-weight: bold;">LOGOUT</a>
+                    </div>
+                </div>
+
+                <a href="/cart" class="hide"><i class="fa-solid fa-cart-shopping"></i></a>
+
+            <% } else { %>
+                <a href="/login" class="hide">LOGIN</a>
+                <a href="/register" class="hide">DAFTAR</a>
+
+                <a href="/cart" class="hide"><i class="fa-solid fa-cart-shopping"></i></a>
+
+            <% } %>
+
+        </nav>
+    </header>
+
+    <a href="/cart" class="cart-hp">
+        <i class="fa-solid fa-cart-shopping"></i>
+    </a>
+
+    <menu>
+        <% if (products && products.length> 0) { %>
+            <% products.forEach(product=> { %>
+                <div class="m-varian" data-nama="<%= product.name %>" data-harga="<%= product.price %>" id="<%= product.category.replace(/\s/g, '-') %>">
+                    <div class="v-img">
+                        <img src="<%= product.image_url %>" alt="<%= product.name %>" class="img1">
+                    </div>
+                    <h3 class="nama-v">
+                        <%= product.name %>
+                    </h3>
+                    <p>Rp <%= product.price.toLocaleString('id-ID') %>
+                    </p>
+                    <button class="btn add-to-cart">BUY</button>
+                </div>
+            <% }); %>
+        <% } else { %>
+            <p>Menu tidak ditemukan atau database error.</p>
+        <% } %>
+    </menu>
+
+    <footer>
+        <img src="https://raw.githubusercontent.com/tristan27278/StarSandwich/refs/heads/main/img/logo%20starsandwich.jpg"
+            alt="logo brand" class="img-logo">
+
+        <div class="customer">
+            <h3>CUSTOMER CARE</h3>
+            <a href="/faq"><b>FAQ'S</b></a>
+            <a href="/contact"><b>CONTACT</b></a>
+             <a href="/privacy"><b>PRIVACY POLICY</b></a>
+
+        </div>
+
+        <div class="info">
+            <h3>INFO</h3>
+            <p>Buka 
+                <br>
+                senin - sabtu
+                <br>
+                08.00 - 17.00 WIB
+            </p>
+            <p>Telp: 0857-1555-2613</p>
+        </div>
+
+        <div class="social">
+            <h3>FOLLOW US</h3>
+            <a href="https://wa.me/62895709043700" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/starsandw1ch?igsh=ZGM2amUyeGd5a3Zn" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://youtube.com/@fruitsandomukcurr?si=tIgInGKR4ZwUiD_A" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://id.shp.ee/lnh1aos?smtt=0.0.9" target="_blank"><i class="fa-solid fa-bag-shopping"></i></a>
+            <a href="https://www.tiktok.com/@sstarsandwich" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://x.com/starsandwich1" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+    </footer>
+
+    <div class="copyright">
+        <p>© 2025 STAR SANDWICH. All Rights Reserved.</p>
+    </div>
+
+    <script>
+        function addToCart(nama, harga) {
+            if (!nama || !harga) {
+                alert("Produk ini tidak bisa ditambahkan.");
+                return;
+            }
+
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const existingItem = cart.find(item => item.nama.trim() === nama.trim());
+            
+            if (existingItem) {
+                existingItem.qty++;
+            } else {
+                cart.push({ nama: nama.trim(), harga: parseInt(harga), qty: 1 });
+            }
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`"${nama}" berhasil ditambahkan ke keranjang!`);
+        }
+
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            const item = button.closest('.m-varian');
+            
+            const nama = item?.dataset?.nama;
+            const harga = item?.dataset?.harga;
+
+            if (!nama || !harga) {
+                button.disabled = true;
+                button.textContent = "ERROR";
+                return;
+            }
+
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                addToCart(nama, harga);
+            });
+        });
+    </script>
+</body>
+
+</html>
