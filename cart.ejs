@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KERANJANG</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Potta+One&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+            font-family: "Potta One", sans-serif;
+        }
+
+        .m-back {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            color: #333;
+            font-weight: 500;
+            text-decoration: none;
+            transition: 0.2s;
+            width: fit-content;
+            margin-bottom: 20px;
+        }
+
+        .m-back:hover {
+            background-color: #d4d4d4;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        #cart-container {
+            margin-top: 10px;
+        }
+
+        .c-kosong {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .c-kosong .material-symbols-outlined {
+            font-size: 120px;
+            color: #333;
+            background-color: #00000008;
+            border-radius: 100px;
+            width: 200px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        ul.cart-list {
+            list-style: none;
+            padding: 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        ul.cart-list li {
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        ul.cart-list li:last-child {
+            border-bottom: none;
+        }
+
+        .item-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .qty-control {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 4px;
+        }
+
+        .qty-btn {
+            width: 26px;
+            height: 26px;
+            border: 1px solid #ccc;
+            background: #f9f9f9;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .qty-display {
+            min-width: 24px;
+            text-align: center;
+        }
+
+        .hapus-btn {
+            background: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .hapus-btn:hover {
+            background: #e60000;
+        }
+
+        .total {
+            margin-top: 15px;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: right;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .checkout-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: maroon;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+        }
+
+        .checkout-btn:hover {
+            background: #8b0000;
+        }
+
+        .payment {
+            margin-top: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .payment h4 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: maroon;
+        }
+
+        .pay input[type="radio"] {
+            display: none;
+        }
+
+        .pay {
+            display: block;
+            padding: 0;
+            margin-bottom: 8px;
+        }
+
+        .pay span {
+            display: block;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s, border-color 0.2s;
+            font-weight: 500;
+        }
+
+        .pay input:checked+span {
+            background: maroon;
+            color: white;
+            border-color: maroon;
+            box-shadow: 0 0 5px rgba(128, 0, 0, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>KERANJANG</h1>
+    </header>
+
+    <a href="/" class="m-back">
+        <span class="material-symbols-outlined">arrow_back_ios_new</span>
+        <span>LANJUTKAN BELANJA</span>
+    </a>
+
+    <div id="cart-container"></div>
+
+    <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="Mid-client-e_KLMEuUjbUGC0HO"></script>
+
+    <script>
+        function saveCart(cart) {
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        function getCart() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            return cart.filter(item =>
+                item && typeof item.nama === 'string' && item.nama.trim() !== '' &&
+                typeof item.harga === 'number' && item.qty > 0
+            );
+        }
+
+        function updateQty(index, delta) {
+            let cart = getCart();
+            cart[index].qty += delta;
+            if (cart[index].qty < 1) cart[index].qty = 1;
+            saveCart(cart);
+            renderCart();
+        }
+
+        function removeItem(index) {
+            let cart = getCart();
+            cart.splice(index, 1);
+            saveCart(cart);
+            renderCart();
+        }
+
+        async function proceedToMidtransPayment(cart, totalAmount, paymentMethod) {
+            try {
+                const response = await fetch('/create-midtrans-token', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ cartData: cart, totalAmount, paymentMethod })
+                });
+
+                const data = await response.json();
+
+                if (data.success && data.token) {
+                    localStorage.setItem('pendingOrderId', data.orderId);
+
+                    snap.pay(data.token, {
+                        onSuccess: (result) => {
+                            alert('Pembayaran berhasil!');
+                            localStorage.removeItem('cart');
+                            window.location.href = '/history';
+                        },
+                        onPending: (result) => {
+                            alert('Pembayaran sedang diproses. Silakan cek email atau notifikasi.');
+                            window.location.href = '/history';
+                        },
+                        onError: (result) => {
+                            alert('Pembayaran gagal. Silakan coba lagi.');
+                        },
+                        onClose: () => {
+                            alert('Anda menutup popup pembayaran.');
+                        }
+                    });
+                } else {
+                    alert('Gagal: ' + (data.error || 'Token tidak tersedia'));
+                }
+            } catch (err) {
+                console.error(err);
+                alert('Kesalahan koneksi ke server pembayaran.');
+            }
+        }
+
+        async function proceedToCheckout() {
+            const cart = getCart();
+            if (cart.length === 0) {
+                alert("Keranjang Anda kosong!");
+                return;
+            }
+
+            const selectedPayment = document.querySelector('input[name="metode"]:checked');
+            if (!selectedPayment) {
+                alert("Pilih metode pembayaran!");
+                return;
+            }
+
+            const paymentMethod = selectedPayment.value;
+            const totalAmount = cart.reduce((sum, item) => sum + (item.harga * item.qty), 0);
+
+            if (paymentMethod === 'cash') {
+                if (!confirm(`Konfirmasi Pesanan:\nTotal: Rp ${totalAmount.toLocaleString('id-ID')}\nMetode: CASH\n\nLanjutkan?`)) return;
+
+                const response = await fetch('/checkout-process', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ cartData: cart, totalAmount, paymentMethod: 'cash' })
+                });
+
+                const data = await response.json();
+                if (data.success) {
+                    alert(`Pesanan berhasil! ID: ${data.orderId}`);
+                    localStorage.removeItem('cart');
+                    window.location.href = '/history';
+                } else {
+                    if (response.status === 401) {
+                        alert("Login dulu!");
+                        window.location.href = '/login';
+                    } else {
+                        alert('Gagal: ' + data.message);
+                    }
+                }
+            } else {
+                await proceedToMidtransPayment(cart, totalAmount, paymentMethod);
+            }
+        }
+
+        function renderCart() {
+            const cart = getCart();
+            const container = document.getElementById('cart-container');
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                <div class="c-kosong">
+                    <span class="material-symbols-outlined">shopping_bag</span>
+                    <p>TIDAK ADA PRODUK DI KERANJANG</p>
+                </div>
+            `;
+                return;
+            }
+
+            let html = '<ul class="cart-list">';
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                const subtotal = item.harga * item.qty;
+                total += subtotal;
+                html += `
+                <li>
+                    <div class="item-info">
+                        <strong>${item.nama}</strong>
+                        <div class="qty-control">
+                            <button class="qty-btn" onclick="updateQty(${index}, -1)">−</button>
+                            <span class="qty-display">${item.qty}</span>
+                            <button class="qty-btn" onclick="updateQty(${index}, 1)">+</button>
+                        </div>
+                    </div>
+                    <div style="display:flex; flex-direction:column; align-items: flex-end; gap: 5px;">
+                        <div>Rp ${subtotal.toLocaleString('id-ID')}</div>
+                        <button class="hapus-btn" onclick="removeItem(${index})">Hapus</button>
+                    </div>
+                </li>
+            `;
+            });
+
+            html += `</ul>`;
+            html += `<div class="total">Grand Total: Rp ${total.toLocaleString('id-ID')}</div>`;
+
+            html += `
+        <div class="payment">
+            <h4>METODE PEMBAYARAN</h4>
+            <label class="pay"><input type="radio" name="metode" value="qris" checked><span>QRIS</span></label>
+            <label class="pay"><input type="radio" name="metode" value="dana"><span>DANA</span></label>
+            <label class="pay"><input type="radio" name="metode" value="shopeepay"><span>SHOPEEPAY</span></label>
+            <label class="pay"><input type="radio" name="metode" value="cash"><span>CASH (Bayar di tempat)</span></label>
+        </div>
+        <button class="checkout-btn" onclick="proceedToCheckout()">LANJUT KE PEMBAYARAN</button>`;
+
+            container.innerHTML = html;
+        }
+
+        document.addEventListener('DOMContentLoaded', renderCart);
+        window.updateQty = updateQty;
+        window.removeItem = removeItem;
+        window.proceedToCheckout = proceedToCheckout;
+    </script>
+</body>
+
+</html>
