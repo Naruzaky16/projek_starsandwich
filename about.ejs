@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title || "Tentang Kami - STAR SANDWICH" %>
+    </title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", Arial, sans-serif;
+            background: linear-gradient(135deg, #ffecec, #fff6f6, #ffdede);
+            animation: fadeBG 6s infinite alternate;
+        }
+
+        @keyframes fadeBG {
+            0% {
+                background: linear-gradient(135deg, #ffecec, #fff6f6, #ffdede);
+            }
+
+            100% {
+                background: linear-gradient(135deg, #ffe5e5, #fff0f0, #ffd1d1);
+            }
+        }
+
+        .header {
+            width: 100%;
+            background: rgba(128, 0, 0, 0.85);
+            backdrop-filter: blur(7px);
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            z-index: 999;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            animation: headerFade 0.8s ease-out;
+        }
+
+        @keyframes headerFade {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo {
+            width: 40px;
+            border-radius: 100px;
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: 2px solid white;
+            object-fit: cover;
+        }
+
+        .container {
+            margin-top: 120px;
+            margin-bottom: 50px;
+            padding: 25px;
+            width: 90%;
+            max-width: 900px;
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 10px 25px rgba(150, 0, 0, 0.25);
+            animation: floatUp 0.7s ease-out;
+        }
+
+        @keyframes floatUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .title-box {
+            text-align: center;
+            margin-bottom: 25px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .title-box h2 {
+            color: maroon;
+            font-size: 32px;
+        }
+
+        .line {
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #ff9a9a, maroon, #ff9a9a);
+            margin: 10px auto;
+            border-radius: 5px;
+            animation: glow 1.8s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 5px #ffbebe;
+            }
+
+            to {
+                box-shadow: 0 0 15px #ff5a5a;
+            }
+        }
+
+        .section {
+            display: flex;
+            align-items: flex-start;
+            padding: 15px;
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 12px;
+            margin-bottom: 18px;
+            border: 1px solid rgba(255, 170, 170, 0.5);
+            box-shadow: 0 4px 10px rgba(120, 0, 0, 0.15);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: sectionFade 0.8s forwards;
+        }
+
+        .section:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .section:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .section:nth-child(5) {
+            animation-delay: 0.6s;
+        }
+
+        .section:nth-child(6) {
+            animation-delay: 0.8s;
+        }
+
+        @keyframes sectionFade {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section .material-symbols-outlined {
+            font-size: 38px;
+            color: maroon;
+            padding: 8px;
+            background: rgba(255, 227, 227, 0.7);
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+
+        .section:hover .material-symbols-outlined {
+            transform: rotate(12deg) scale(1.1);
+        }
+
+        .section p {
+            font-size: 17px;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        @media (max-width: 600px) {
+            .section p {
+                font-size: 15px;
+                line-height: 1.5;
+            }
+
+            .title-box h2 {
+                font-size: 28px;
+            }
+        }
+
+        .back {
+            display: block;
+            margin: 35px auto 15px auto;
+            background: maroon;
+            padding: 14px 20px;
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            width: 220px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            transition: 0.25s;
+            box-shadow: 0 5px 12px rgba(120, 0, 0, 0.35);
+            animation: fadeUpButton 1s ease-out;
+        }
+
+        @keyframes fadeUpButton {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .back:hover {
+            background-color: #5c0000;
+            transform: scale(1.07);
+            box-shadow: 0 7px 15px rgba(80, 0, 0, 0.5);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <img src="https://raw.githubusercontent.com/tristan27278/StarSandwich/refs/heads/main/img/logo%20starsandwich.jpg"
+            alt="Star Sandwich Logo" class="logo">
+        <h2><b>TENTANG KAMI</b></h2>
+    </div>
+
+    <div class="container">
+
+        <div class="title-box">
+            <h2>STAR SANDWICH</h2>
+            <div class="line"></div>
+        </div>
+
+        <div class="section">
+            <span class="material-symbols-outlined">restaurant</span>
+            <p>
+                **Star Sandwich** menghadirkan sandwich manis yang dibuat dengan penuh perhatian dan kualitas tinggi,
+                memberikan rasa *fresh* & lembut yang cocok dinikmati kapan saja. Misi kami adalah menjadi pilihan utama
+                untuk camilan manis yang sehat dan memuaskan.
+            </p>
+        </div>
+
+        <div class="section">
+            <span class="material-symbols-outlined">workspace_premium</span>
+            <p>
+                Kami fokus pada **kebersihan, rasa, dan pelayanan**. Setiap produk Star Sandwich dibuat dari **bahan
+                premium**
+                seperti buah segar pilihan dan roti yang diolah khusus, menjamin kualitas terbaik untuk pelanggan kami.
+            </p>
+        </div>
+
+        <div class="section">
+            <span class="material-symbols-outlined">location_on</span>
+            <p>
+                Kamu bisa menemukan kami di lokasi strategis:
+                <br><b>Jl. Raya Cikampek-Parakan, Cikampek Kota, Karawang</b>.
+                Kami siap melayani pesanan *take away* dan juga tersedia di berbagai layanan pesan antar online.
+            </p>
+        </div>
+
+        <div class="section">
+            <span class="material-symbols-outlined">favorite</span>
+            <p>
+                Terima kasih telah mendukung Star Sandwich! Kami akan terus berinovasi untuk menghadirkan varian rasa
+                baru
+                dan mempertahankan kualitas terbaik. Kepuasan Anda adalah bintang bagi kami.
+            </p>
+        </div>
+
+        <a href="/" class="back">← KEMBALI KE MENU</a>
+    </div>
+
+</body>
+
+</html>
