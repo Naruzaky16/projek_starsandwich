@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORDER STAR SANDWICH</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Mozilla+Text:wght@200..700&family=Poppins:wght@300;400;600;700&family=Potta+One&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <style>
+        * { box-sizing: border-box; padding: 0; margin: 0; }
+
+        body { font-family: "Poppins", sans-serif; }
+
+        header {
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+        }
+
+        header h1 {
+            font-family: "Potta One", sans-serif;
+            font-size: 28px;
+        }
+
+        .menu-order {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            width: 75%;
+            padding: 18px 20px;
+            color: aliceblue;
+            border-radius: 25px;
+            font-family: "Mozilla Text", sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            text-decoration: none;
+            transition: 0.25s;
+        }
+
+        .menu:hover { transform: translateY(-4px); opacity: 0.9; }
+
+        .menu i { font-size: 28px; }
+
+        @media (max-width: 600px) {
+            .menu { flex-direction: column; text-align: center; }
+            .menu i { font-size: 34px; }
+            .menu h5 { font-size: 14px; }
+        }
+
+        .m1 { background-color: #5dade2; }
+        .m2 { background-color: #7dcea0; }
+        .m3 { background-color: rgb(211, 38, 182); }
+        .m4 { background-color: #eb984e; }
+
+        footer { margin-top: 50px; padding: 20px 0; }
+
+        .social {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .social a {
+            color: #272c30;
+            font-size: 28px;
+        }
+
+        .m-back {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            background: maroon;
+            color: #fff;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            width: fit-content;
+            margin-bottom: 30px;
+        }
+
+        .m-back:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+            background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+        }
+
+        .m-back span.material-symbols-outlined {
+            font-size: 24px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>STAR SANDWICH</h1>
+</header>
+
+<a href="/" class="m-back">
+    <span class="material-symbols-outlined">arrow_back_ios_new</span>
+    <span></span>
+</a>
+
+<div class="menu-order">
+
+    <a href="#" class="menu m1" target="_blank">
+        <i class="fa-solid fa-globe"></i>
+        <h5>WEBSITE</h5>
+    </a>
+
+    <a href="https://wa.me/6281234567890?text=Halo%20mau%20pesan%20Star%20Sandwich" class="menu m2" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+        <h5>DELIVERY BY COURIER (WHATSAPP)</h5>
+    </a>
+
+    <a href="https://www.instagram.com/starsandw1ch?igsh=ZGM2amUyeGd5a3Zn" class="menu m3" target="_blank">
+        <i class="fa-brands fa-instagram"></i>
+        <h5>DELIVERY BY COURIER (INSTAGRAM)</h5>
+    </a>
+
+    <a href="https://shopee.co.id/starsandwich1" class="menu m4" target="_blank">
+        <i class="fa-solid fa-store"></i>
+        <h5>SHOPEE</h5>
+    </a>
+
+</div>
+
+<footer>
+    <div class="social">
+
+        <a href="https://youtube.com/@fruitsandomukcurr?si=tIgInGKR4ZwUiD_A" target="_blank">
+            <i class="fa-brands fa-youtube"></i>
+        </a>
+
+        <a href="https://www.tiktok.com/@sstarsandwich?_r=1&_t=ZS-91vvPnj0V4n" target="_blank">
+            <i class="fa-brands fa-tiktok"></i>
+        </a>
+
+        <a href="https://x.com/starsandwich1/status/1964751364980154724?t=JthXxp2wEjovL_RaJZLz9Q&s=08" target="_blank">
+            <i class="fa-brands fa-x-twitter"></i>
+        </a>
+
+    </div>
+</footer>
+
+</body>
+</html>
